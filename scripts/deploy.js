@@ -5,11 +5,11 @@ const main = async () => {
   console.log("Deploying contracts with account: ", deployer.address);
   console.log("Account balance: ", accountBalance.toString());
 
-  const waveContractFactory = await hre.ethers.getContractFactory("WavePortal");
-  const waveContract = await waveContractFactory.deploy();
-  await waveContract.deployed();
+  const kissContractFactory = await hre.ethers.getContractFactory("kissingPortal");
+  const kissContract = await kissContractFactory.deploy();
+  await kissContract.deployed();
 
-  console.log("WavePortal address: ", waveContract.address);
+  console.log("kissingPortal address: ", kissContract.address);
 };
 
 const runMain = async () => {
