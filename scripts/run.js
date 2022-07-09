@@ -1,24 +1,24 @@
 const main = async () => {
-    const [owner, randomPerson] = await hre.ethers.getSigners();
-    const kissContractFactory = await hre.ethers.getContractFactory("kissingPortal");
+    
+    const kissContractFactory = await hre.ethers.getContractFactory("KissingPortal");
     const kissContract = await kissContractFactory.deploy();
     await kissContract.deployed();
   
-    console.log("Contract deployed to:", kissContract.address);
-    console.log("Contract deployed by:", owner.address);
+    console.log("Contract address:", kissContract.address);
   
     let kissCount;
     kissCount = await kissContract.getTotalKisses();
+    console.log(kissCount.toNumber());
   
-    let kissTxn = await kissContract.kiss();
+    let kissTxn = await kissContract.kiss("A message!");
     await kissTxn.wait();
 
-    kissCount = await kissContract.getTotalKisses();
-
-    kissTxn = await kissContract.connect(randomPerson).kiss();
+    const [_, randomPerson] = await hre.ethers.getSigners();
+    kissTxn = await kissContract.connect(randomPerson).kiss("Another message!");
     await kissTxn.wait();
   
-    kissCount = await kissContract.getTotalKisses();
+    let allKisses = await kissContract.getAllKisses();
+    console.log(allKisses);
   };
   
   const runMain = async () => {
