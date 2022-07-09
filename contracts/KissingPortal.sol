@@ -29,6 +29,10 @@ contract kissingPortal {
         emit NewKiss(msg.sender, block.timestamp, _message);
     }
 
+    function getAllKisses() public view returns (Wave[] memory) {
+        return kisses;
+    }
+
     function getTotalKisses() public view returns (uint256) {
         console.log("We have %d total kisses!", totalkisses);
         return totalkisses;
