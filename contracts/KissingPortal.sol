@@ -7,6 +7,14 @@ import "hardhat/console.sol";
 contract kissingPortal {
     uint256 totalkisses;
     
+    event newKiss(address indexed from, uint256 timestamp, string message);
+
+    struct Kiss {
+        address kisser;
+        string message;
+        uint256 timestamp;
+    }
+
     constructor() {
         console.log("Hey there! Welcome to the Kissing Portal!");
     }
