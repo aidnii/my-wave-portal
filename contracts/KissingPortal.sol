@@ -29,7 +29,7 @@ contract kissingPortal {
         emit NewKiss(msg.sender, block.timestamp, _message);
     }
 
-    function getAllKisses() public view returns (Wave[] memory) {
+    function getAllKisses() public view returns (Kiss[] memory) {
         return kisses;
     }
 
