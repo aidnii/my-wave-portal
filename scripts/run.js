@@ -1,6 +1,6 @@
 const main = async () => {
     
-    const kissContractFactory = await hre.ethers.getContractFactory("KissingPortal");
+    const kissContractFactory = await hre.ethers.getContractFactory("kissingPortal");
     const kissContract = await kissContractFactory.deploy();
     await kissContract.deployed();
   
