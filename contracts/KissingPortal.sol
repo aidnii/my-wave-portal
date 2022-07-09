@@ -7,7 +7,7 @@ import "hardhat/console.sol";
 contract kissingPortal {
     uint256 totalkisses;
     
-    event newKiss(address indexed from, uint256 timestamp, string message);
+    event NewKiss(address indexed from, uint256 timestamp, string message);
 
     struct Kiss {
         address kisser;
@@ -15,13 +15,18 @@ contract kissingPortal {
         uint256 timestamp;
     }
 
+    Kiss[] kisses;
+
     constructor() {
         console.log("Hey there! Welcome to the Kissing Portal!");
     }
 
-    function kiss() public {
+    function kiss(string memory _message) public {
         totalkisses += 1;
-        console.log("Hey! %s has blown a kiss at you!", msg.sender);
+        console.log("Hey! %s has blown a kiss at you & sent a message!", msg.sender, _message);
+
+        kisses.push(Kiss(msg.sender, _message, block.timestamp));
+        emit NewKiss(msg.sender, block.timestamp, _message);
     }
 
     function getTotalKisses() public view returns (uint256) {
