@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 
 import "hardhat/console.sol";
 
+//kissing portal smart contract
 contract kissingPortal {
     uint256 totalkisses;
     
