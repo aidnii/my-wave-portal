@@ -18,7 +18,7 @@ contract kissingPortal {
 
     Kiss[] kisses;
 
-    constructor() {
+    constructor() payable {
         console.log("Hey there! Welcome to the Kissing Portal!");
     }
 
