@@ -20,6 +20,8 @@ contract kissingPortal {
 
     Kiss[] kisses;
 
+    mapping(address => uint256) public lastKissedAt;
+
     constructor() payable {
         console.log("Hey there! Welcome to the Kissing Portal!");
 
@@ -27,15 +29,17 @@ contract kissingPortal {
     }
 
     function kiss(string memory _message) public {
+        
+        require(lastKissedAt[msg.sender] + 15 minutes < block.timestamp, "Wait 15 minutes");
+
+        lastKissedAt[msg.sender] = block.timestamp;
+        
         totalkisses += 1;
         console.log("Hey! %s has blown a kiss at you & sent a message!", msg.sender, _message);
 
         kisses.push(Kiss(msg.sender, _message, block.timestamp));
 
         seed = (block.difficulty + block.timestamp + seed) % 100;
-
-        console.log("Random # generated: %d", seed);
-        
 
         if (seed < 50) {
             console.log("%s won!", msg.sender);
