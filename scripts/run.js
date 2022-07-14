@@ -15,8 +15,11 @@ const main = async () => {
     console.log("Contract Balance:", hre.ethers.utils.formatEther(contractBalance));
   
     //send kisses
-    let kissTxn = await kissContract.kiss("A message!");
+    const kissTxn = await kissContract.kiss("Kiss #1!");
     await kissTxn.wait();
+
+    const kissTxn2 = await kissContract.kiss("Kiss #2!");
+    await kissTxn2.wait();
 
     //Get Contract Balance to see what happened!
     contractBalance = await hre.ethers.provider.getBalance(kissContract.address);
