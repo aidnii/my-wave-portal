@@ -30,7 +30,7 @@ contract kissingPortal {
 
     function kiss(string memory _message) public {
         
-        require(lastKissedAt[msg.sender] + 15 minutes < block.timestamp, "Wait 15 minutes");
+        require(lastKissedAt[msg.sender] + 30 seconds < block.timestamp, "Must wait 30 seconds before blowing a kiss again.");
 
         lastKissedAt[msg.sender] = block.timestamp;
         
